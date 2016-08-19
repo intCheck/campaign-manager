@@ -25,8 +25,8 @@
     "hapi": "^14.2.0",
     "lodash": "^4.15.0",
     "mocha": "^3.0.2",
-    "mongodb": "^2.2.7",
     "mongoose": "^4.5.9",
-    "nodemon": "^1.10.2"
+    "nodemon": "^1.10.2",
+    "promised-mongo": "^1.2.0"
   }
 }
