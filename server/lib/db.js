@@ -13,5 +13,5 @@ db.deleteEverything = function () {
     db.collection('users').remove()
   ])
 }
-
+// some changes
 module.exports = db; 
