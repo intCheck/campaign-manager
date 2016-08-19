@@ -9,7 +9,7 @@ var _ = require('lodash');
 // Delete everything function to clean database
 db.deleteEverything = function () {
   return Promise.all([
-    db.collection('tutorials').remove(),
+    db.collection('characters').remove(),
     db.collection('users').remove()
   ])
 }
