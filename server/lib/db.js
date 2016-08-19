@@ -12,6 +12,12 @@ db.deleteEverything = function () {
     db.collection('characters').remove(),
     db.collection('users').remove()
   ])
+  .then(function(result){
+    console.log('removed characters/users from db', result);
+  })
+  .catch(error) {
+    console.log('Error: ', error);
+  }
 }
-// some changes
+
 module.exports = db; 
