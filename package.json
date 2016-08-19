@@ -21,6 +21,12 @@
   "homepage": "https://github.com/intCheck/campaign-manager#readme",
   "dependencies": {
     "chai": "^3.5.0",
-    "mocha": "^3.0.2"
+    "grunt": "^1.0.1",
+    "hapi": "^14.2.0",
+    "lodash": "^4.15.0",
+    "mocha": "^3.0.2",
+    "mongodb": "^2.2.7",
+    "mongoose": "^4.5.9",
+    "nodemon": "^1.10.2"
   }
 }
