@@ -10,7 +10,7 @@ Users.insert = function(Users) {
 }
 
 Users.find = function(query) {
-  var query = query || {};
+  const query = query || {};
   // the id can be undefined
   return collection().find(query);
 }
