@@ -5,7 +5,7 @@ const dbName = process.env.NODE_ENV === 'production' ? process.env.MONGOLAB_URI 
 // Establish db
 const db = pmongo(dbName);
 const _ = require('lodash');
-const fixtures = require('./sample.js');
+const samples = require('./sample.js');
 
 // Delete everything function to clean database
 db.deleteEverything = function () {
@@ -30,7 +30,7 @@ db.loadSample = function(records, collectionName) {
   // where the key is the collection name and the
   // value is an array of records to be inserted
 
-  _.each(fixtures, function(records, collectionName){
+  _.each(samples, function(records, collectionName){
     db.collection(collectionName).find().then(function(items){
       // only insert if the collection is empty
       if(items.length === 0) {
@@ -41,7 +41,7 @@ db.loadSample = function(records, collectionName) {
 }
 
 // Loading samples in a database, but not yet:
-// db.loadSample(fixtures, 'Users');
+// db.loadSample(samples, 'Users');
 
 
 module.exports = db;
