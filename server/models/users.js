@@ -5,8 +5,8 @@ const collection = function() {
   return db.collection('users')
 }
 
-Users.insert = function(Users) {
-  return collection().insert(Users);
+Users.insert = function(user) {
+  return collection().insert(user);
 }
 
 Users.find = function(query) {

@@ -2,11 +2,11 @@ const db = require('../lib/db.js')
 const Characters = {};
 
 const collection = function() {
-  return db.collection('Characters')
+  return db.collection('characters')
 }
 
-Characters.insert = function(Characters) {
-  return collection().insert(Characters);
+Characters.insert = function(character) {
+  return collection().insert(character);
 }
 
 Characters.find = function(query) {
