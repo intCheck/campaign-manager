@@ -3,27 +3,41 @@ const db = require('./lib/db');
 // Create a server with a host and port
 const server = new Hapi.Server();
 server.connection({
-    host: process.env.IP || '0.0.0.0',
-    port: process.env.PORT || 3000
+  host: process.env.IP || 'localhost',
+  port: process.env.PORT || 1337
 });
 
-// Add the route
+/**
+* Used to create routes out of incoming route arrays:
+*/
+const routeMaker = (routes) => {
+  routes.forEach( route => {
+      server.route(route);
+  })
+}
+// Route Arrays:
+const charRoutes = require('./routes/characters');
+const userRoutes = require('./routes/users')
+
+// Exposing Routes
+routeMaker(charRoutes);
+routeMaker(userRoutes);
+
+// Default Route:
 server.route({
     method: 'GET',
-    path:'/hello',
+    path: '/',
     handler: function (request, reply) {
-
-        return reply('hello world');
+        reply('Welcome!');
     }
-});
+})
 
 // Start the server
 server.start((err) => {
-
-    if (err) {
-        throw err;
-    }
-    console.log('Server running at:', server.info.uri);
+  if (err) {
+      throw err;
+  }
+  console.log('Server running at:', server.info.uri);
 });
 //
-db.loadSample('users');
+// db.loadSample('users');
