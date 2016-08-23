@@ -6,15 +6,6 @@ require(__server + '/server.js');
 const request = require('supertest');
 const url = 'http://localhost:1337';
 const assert = require('assert')
-// before(function() {
-  // server.start((err) => {
-  // if (err) {
-      // throw err;
-  // }
-  // console.log('TEST SERVER RUNNING:', server.info.uri);
-  // });
-// });
-console.log('YOYOYOYOYOY')
 
 describe('API Tests', function () {
 
