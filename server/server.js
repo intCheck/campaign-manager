@@ -7,21 +7,11 @@ server.connection({
   port: process.env.PORT || 1337
 });
 
-/**
-* Used to create routes out of incoming route arrays:
-*/
-const routeMaker = (routes) => {
-  routes.forEach( route => {
-      server.route(route);
-  })
-}
 // Route Arrays:
 const charRoutes = require('./routes/characters');
-const userRoutes = require('./routes/users')
-
-// Exposing Routes
-routeMaker(charRoutes);
-routeMaker(userRoutes);
+const userRoutes = require('./routes/users');
+server.route(charRoutes);
+server.route(userRoutes);
 
 // Default Route:
 server.route({
