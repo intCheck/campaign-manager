@@ -27,7 +27,7 @@
     "hapi": "^14.2.0",
     "lodash": "^4.15.0",
     "mocha": "^3.0.2",
-    "mongoose": "^4.5.9",
+    "mongoose": "^4.5.10",
     "nodemon": "^1.10.2",
     "promised-mongo": "^1.2.0",
     "superagent": "^2.2.0",
