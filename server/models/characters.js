@@ -10,17 +10,17 @@ Characters.insert = function(character) {
 }
 
 Characters.find = function(query) {
-  const query = query || {};
+  const query1 = query || {};
   // the id can be undefined
-  return collection().find(query);
+  return collection('characters').find(query1);
 }
 
 Characters.findByID = function(id) {
-  return collection().findOne({_id : db.getMongoID(id)});
+  return collection('characters').findOne({_id : db.getMongoID(id)});
 }
 
 Characters.update = function(query, updateFields) {
-  return collection().update(query, {$set : updateFields});
+  return collection('characters').update(query, {$set : updateFields});
 }
 
 Characters.updateByID = function(id, updateFields) {
