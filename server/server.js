@@ -33,9 +33,13 @@ server.start((err) => {
 module.exports = server;
 //
 // db.loadSample('users');
+<<<<<<< 474b2b54d87aac5c89216e696d0f480421599e40
 // This is comment muahahaha
 
 
 
 
 // This is another comment
+=======
+// This is a comment changed!
+>>>>>>> added a comment
