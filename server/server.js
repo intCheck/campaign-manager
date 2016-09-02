@@ -21,6 +21,11 @@ const server = restify.createServer(serverOptions);
 server.use(restify.bodyParser());
 server.use(restify.queryParser());
 
+/*
+* Expose routes:
+*/
+const generateUserRoutes = require('./routes/users');
+generateUserRoutes(server);
 
 /**
 * Default Route to test our server
@@ -35,8 +40,14 @@ server.use(function(req, res, next) {
 	return next();
 });
 
+<<<<<<< c0b378f702fe43ed1ab46741690c8bc58d82028c
 module.exports = server;
 
 
 
+=======
+server.listen(port, function () {
+  console.log(chalk.green(' .=^.^= Server now meowing on port ' + port + ' =^.^=.'));
+});
+>>>>>>> server and user routes working
 

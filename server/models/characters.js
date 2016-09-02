@@ -7,7 +7,11 @@ const collection = function() {
 
 Characters.insert = function(character) {
   return collection().insert(character);
-};
+}
+
+Characters.insert = function(character) {
+  return collection().insert(character);
+}
 
 Characters.find = function(query) {
   const query1 = query || {};
