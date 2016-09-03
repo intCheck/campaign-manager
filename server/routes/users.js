@@ -23,7 +23,7 @@ function generateUserRoutes(server) {
   });
 
   server.put('/users/:id', function(req, res) {
-    console.log('REQ: ', req);
+    console.log('REQ: ', req.params);
     res.send('Updated user by ID!');
     console.log('Updated user by ID!');
 
