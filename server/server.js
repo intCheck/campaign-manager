@@ -25,12 +25,10 @@ generateUserRoutes(app);
 */
 app.get('/', function(req, res, next) {
 	res.send('hello world')
-	// return next();
 });
 
 app.use(function(req, res, next) {
 	console.log(req.method + '' + req.url)
-	// return next();
 });
 
 app.listen(port, function () {
