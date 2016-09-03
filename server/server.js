@@ -24,7 +24,7 @@ generateUserRoutes(app);
 * Default Route to test our app
 */
 app.get('/', function(req, res, next) {
-	res.send('hello world')
+	res.send('.=^.^= This is The Root =^.^=. ')
 });
 
 app.use(function(req, res, next) {
