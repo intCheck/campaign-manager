@@ -35,4 +35,3 @@ app.listen(port, function () {
   console.log(chalk.green(' .=^.^= app now meowing on port ' + port + ' =^.^=.'));
 });
 
-module.exports = server;
