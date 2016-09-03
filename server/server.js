@@ -21,12 +21,11 @@ const serverOptions = {
 **********************/
 const routes = express.Router();
 // Provide a browserified file at a specified path
-routes.get('/app-bundle.js', browserify('./client/app.js'));
+routes.use('/app-bundle.js', browserify('./client/app.js'));
 
 // Static assets (html, etc.)
 const assetFolder = Path.resolve(__dirname, '../client/public')
 routes.use(express.static(assetFolder))
-
 
 
 /*********************\
