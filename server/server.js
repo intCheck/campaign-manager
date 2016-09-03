@@ -1,41 +1,37 @@
-const Hapi = require('hapi');
-const db = require('./lib/db');
-// Create a server with a host and port
-const server = new Hapi.Server();
-server.connection({
-  host: process.env.IP || 'localhost',
-  port: process.env.PORT || 1337
+'use strict';
+// Dependancies
+const express = require('express');
+const chalk = require('chalk');
+
+/*
+* Server configurations
+*/
+// the infamous 'leet' port ヽ(ﾟｰﾟ*ヽ)ヽ(*ﾟｰﾟ*)ﾉ(ﾉ*ﾟｰﾟ)ﾉ cuz we elite.
+const port = process.env.PORT || 1337;
+// Better to set options seperate, incase you need to change later
+const serverOptions = {
+  name: 'Campagin_Manager',
+  version: '1.0.0'
+};
+const app = express(serverOptions);
+/*
+* Expose routes:
+*/
+const generateUserRoutes = require('./routes/users');
+generateUserRoutes(app);
+
+/**
+* Default Route to test our app
+*/
+app.get('/', function(req, res, next) {
+	res.send('.=^.^= This is The Root =^.^=. ')
 });
 
-// Route Arrays:
-const charRoutes = require('./routes/characters');
-const userRoutes = require('./routes/users');
-server.route(charRoutes);
-server.route(userRoutes);
-
-// Default Route:
-server.route({
-    method: 'GET',
-    path: '/',
-    handler: function (request, reply) {
-        reply('Welcome!');
-    }
-})
-
-// Start the server
-server.start((err) => {
-  if (err) {
-      throw err;
-  }
-  console.log('Server running at:', server.info.uri);
+app.use(function(req, res, next) {
+	console.log(req.method + '' + req.url)
 });
 
-module.exports = server;
-//
-// db.loadSample('users');
-// This is comment muahahaha
+app.listen(port, function () {
+  console.log(chalk.green(' .=^.^= app now meowing on port ' + port + ' =^.^=.'));
+});
 
-
-
-
-// This is another comment
