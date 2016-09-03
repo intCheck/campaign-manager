@@ -17,7 +17,7 @@ function generateUserRoutes(server) {
   })
 
   server.post('/users', function(req, res) {
-    res.send('Creating User!');
+    res.send('.=^.^= Creating User! =^.^=.');
     console.log('.=^.^= Creating User! =^.^=.');
 
   });

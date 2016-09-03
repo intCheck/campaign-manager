@@ -16,15 +16,42 @@ describe('API Tests', function () {
       let getRequest = yield request(url)
                                 .get('/users')
                                 .expect(function(response) {
-                                  assert(response.text === 'replace with function to get users!')
+                                  assert(response.text === '.=^.^= Got Some Users! =^.^=.')
                                 })
     })
+    it_('Should be able to \'GET\' /users by id', function * () {
+      let user;
+      let getRequest = yield request(url)
+                                .get('/users/1')
+                                .expect(function(response) {
+                                  assert(response.text === '.=^.^= Get a user by its ID =^.^=.')
+                                })
+    })
+
     it_('Should be able to \'POST\' /users', function * () {
       let user;
       let getRequest = yield request(url)
                                 .post('/users')
                                 .expect(function(response) {
-                                  assert(response.text === 'figure out how to handle this route')
+                                  assert(response.text === '.=^.^= Creating User! =^.^=.')
+                                })
+    })
+
+    it_('Should be able to \'PUT\' (update) /users by id ', function * () {
+      let user;
+      let getRequest = yield request(url)
+                                .put('/users/1')
+                                .expect(function(response) {
+                                  assert(response.text === '.=^.^= Updated user by ID! =^.^=.')
+                                })
+    })
+
+    it_('Should be able to \'DELETE\' /users by id ', function * () {
+      let user;
+      let getRequest = yield request(url)
+                                .delete('/users/1')
+                                .expect(function(response) {
+                                  assert(response.text === '.=^.^= Deleted a user by ID! =^.^=.')
                                 })
     })
   })
