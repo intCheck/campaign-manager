@@ -11,7 +11,7 @@ Home.controller = function () {
   ctrl.response = m.prop('');
 
   ctrl.getReq = function (url) {
-    m.startComputation()
+    m.startComputation();
 
     return new Promise(function(resolve, reject) {
       return resolve(Req.getRequest(url))
@@ -19,14 +19,25 @@ Home.controller = function () {
     .then(function(response) {
       console.log('Response', response.text);
       ctrl.response(response.text);
-      m.endComputation()
+      m.endComputation();
     });
 
 
   }
 
-  ctrl.postReq = Req.postRequest;
+  ctrl.postReq = function(url, data) {
+    m.startComputation();
 
+    return new Promise(function(resolve, reject) {
+      return resolve(Req.postRequest(url))
+    })
+    .then(function(response) {
+      console.log('RESPONSE!', response);
+      ctrl.response(response);
+      m.endComputation();
+    })
+
+  }
 }
 
 //Main view composed of all sub views in desired order of appearance
@@ -57,23 +68,20 @@ const field = function(ctrl) {
       type: 'text',
       placeholder: "url",
       oninput: function(e) {
-        e.preventDefault;
+        e.preventDefault();
         ctrl.url(this.value); }
     }),
     m('br'),
     m('br'),
-    m('a', 'Response from server: ' + ctrl.response()),
+    m('a', 'Response from server: ' + ctrl.response())
   ])
 };
 
 
 const buttons = function(ctrl) {
-  return m('button', {
-        type: 'submit',
-        onclick: function(e){
-          e.preventDefault();
-          ctrl.getReq(ctrl.url());
-        }
-     }, 'GET')
+  return m('div', [
+    m('button', { type: 'submit', onclick: function(e){ e.preventDefault();  ctrl.getReq(ctrl.url()); }}, 'GET'),
+    m('button', { type: 'submit', onclick: function(e){ e.preventDefault(); ctrl.postReq(ctrl.url()); }}, 'POST')
+  ])
 
 };
