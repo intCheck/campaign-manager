@@ -1,7 +1,7 @@
 'use strict';
 // Dependancies
-const restify = require('restify');
-const chalk = require('chalk')
+const express = require('express');
+const chalk = require('chalk');
 
 /*
 * Server configurations
@@ -13,41 +13,28 @@ const serverOptions = {
   name: 'Campagin_Manager',
   version: '1.0.0'
 };
-const server = restify.createServer(serverOptions);
-
-/**
-* Middleware functions to help retrieving data from body or queries
-*/
-server.use(restify.bodyParser());
-server.use(restify.queryParser());
-
+const app = express(serverOptions);
 /*
 * Expose routes:
 */
 const generateUserRoutes = require('./routes/users');
-generateUserRoutes(server);
+generateUserRoutes(app);
 
 /**
-* Default Route to test our server
+* Default Route to test our app
 */
-server.get('/', function(req, res, next) {
+app.get('/', function(req, res, next) {
 	res.send('hello world')
-	return next();
+	// return next();
 });
 
-server.use(function(req, res, next) {
+app.use(function(req, res, next) {
 	console.log(req.method + '' + req.url)
-	return next();
+	// return next();
 });
 
-<<<<<<< c0b378f702fe43ed1ab46741690c8bc58d82028c
+app.listen(port, function () {
+  console.log(chalk.green(' .=^.^= app now meowing on port ' + port + ' =^.^=.'));
+});
+
 module.exports = server;
-
-
-
-=======
-server.listen(port, function () {
-  console.log(chalk.green(' .=^.^= Server now meowing on port ' + port + ' =^.^=.'));
-});
->>>>>>> server and user routes working
-
