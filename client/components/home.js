@@ -11,6 +11,7 @@ Home.controller = function () {
   // get properties.
   ctrl.url = m.prop(null);
   ctrl.response = m.prop('');
+
   // right now if we called ctrl.url(), it would equal null.
 
   // This function is defined in the controller. any functions that we want to call in the view, we must
@@ -48,7 +49,35 @@ Home.controller = function () {
     })
     .then(function(response) {
       console.log('RESPONSE!', response);
-      ctrl.response(response);
+      ctrl.response(response.text);
+      m.endComputation();
+    })
+
+  }
+
+    ctrl.putReq = function(url, data) {
+    m.startComputation();
+
+    return new Promise(function(resolve, reject) {
+      return resolve(Req.putRequest(url))
+    })
+    .then(function(response) {
+      console.log('RESPONSE!', response);
+      ctrl.response(response.text);
+      m.endComputation();
+    })
+
+  }
+
+    ctrl.delReq = function(url, data) {
+    m.startComputation();
+
+    return new Promise(function(resolve, reject) {
+      return resolve(Req.delRequest(url))
+    })
+    .then(function(response) {
+      console.log('RESPONSE!', response);
+      ctrl.response(response.text);
       m.endComputation();
     })
 
@@ -136,6 +165,24 @@ const buttons = function(ctrl) {
       onclick: function(e){
         e.preventDefault();
         ctrl.postReq(ctrl.url());
-      }}, 'POST')
+      }}, 'POST'),
+    m('button', {
+      type: 'submit',
+      style: {
+        width: "100px"
+      },
+      onclick: function(e){
+        e.preventDefault();
+        ctrl.putReq(ctrl.url());
+      }}, 'PUT'),
+    m('button', {
+      type: 'submit',
+      style: {
+        width: "100px"
+      },
+      onclick: function(e){
+        e.preventDefault();
+        ctrl.delReq(ctrl.url());
+      }}, 'DELETE'),
   ])
 };
