@@ -35,8 +35,10 @@ Home.controller = function () {
       console.log('Response', response.text);
       ctrl.response(response.text);
       m.endComputation();
-    });
-
+    })
+    .catch(function(error) {
+      ctrl.response(error.message);
+    })
 
   }
   // Similar as to the above function, only this time we have the option to send data.
@@ -52,7 +54,9 @@ Home.controller = function () {
       ctrl.response(response.text);
       m.endComputation();
     })
-
+    .catch(function(error) {
+      ctrl.response(error.message);
+    })
   }
 
     ctrl.putReq = function(url, data) {
@@ -65,6 +69,9 @@ Home.controller = function () {
       console.log('RESPONSE!', response);
       ctrl.response(response.text);
       m.endComputation();
+    })
+    .catch(function(error) {
+      ctrl.response(error.message);
     })
 
   }
@@ -79,6 +86,9 @@ Home.controller = function () {
       console.log('RESPONSE!', response);
       ctrl.response(response.text);
       m.endComputation();
+    })
+    .catch(function(error) {
+      ctrl.response(error.message);
     })
 
   }
